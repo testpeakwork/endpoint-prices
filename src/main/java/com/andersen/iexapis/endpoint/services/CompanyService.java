@@ -31,8 +31,8 @@ public class CompanyService {
     }
 
     public List<CompanyData> getCompaniesStocks(@Valid List<@Size(min=3, max=6) String> symbols,
-                                                @Valid @PastOrPresent Date from,
-                                                @Valid @PastOrPresent Date to) {
+                                                @Valid Date from,
+                                                @Valid Date to) {
         Iterable<Company> companies = companyDao.findAllById(symbols);
         List<CompanyData> companiesData = new ArrayList<>();
         companies.forEach(company -> companiesData.add(createCompanyData(company, from, to)));
