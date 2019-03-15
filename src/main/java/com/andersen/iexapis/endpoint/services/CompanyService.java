@@ -30,7 +30,7 @@ public class CompanyService {
         this.stockDao = stockDao;
     }
 
-    public List<CompanyData> getCompaniesStocks(@Valid List<@Size(min=3, max=6) String> symbols,
+    public List<CompanyData> getCompaniesStocks(@Valid List<@Size(min=2, max=10) String> symbols,
                                                 @Valid Date from,
                                                 @Valid Date to) {
         Iterable<Company> companies = companyDao.findAllById(symbols);
