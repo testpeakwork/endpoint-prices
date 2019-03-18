@@ -1,26 +1,22 @@
 package com.andersen.iexapis.endpoint.controllers;
 
-import com.andersen.iexapis.endpoint.dto.datastore.Company;
 import com.andersen.iexapis.endpoint.dto.json.CompanyData;
 import com.andersen.iexapis.endpoint.services.CompanyService;
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.WebRequest;
 
 import javax.validation.ConstraintViolationException;
-import javax.validation.constraints.PastOrPresent;
-import javax.validation.constraints.Size;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @RestController
-@Api(value="stocks", description="Company endpoint", basePath="/stock")
+@Api(value = "stocks", description = "Company endpoint", basePath = "/stock")
 @RequestMapping(path = "/${service.version}/stocks")
 public class CompanyController {
     private final CompanyService companyService;

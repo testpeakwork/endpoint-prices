@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
-import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,7 +29,7 @@ public class CompanyService {
         this.stockDao = stockDao;
     }
 
-    public List<CompanyData> getCompaniesStocks(@Valid List<@Size(min=2, max=10) String> symbols,
+    public List<CompanyData> getCompaniesStocks(@Valid List<@Size(min = 2, max = 10) String> symbols,
                                                 @Valid Date from,
                                                 @Valid Date to) {
         Iterable<Company> companies = companyDao.findAllById(symbols);
@@ -51,13 +50,13 @@ public class CompanyService {
         return companyData;
     }
 
-    private List<Stock> getStocksByParams (String companySymbol, Date from, Date to) {
+    private List<Stock> getStocksByParams(String companySymbol, Date from, Date to) {
         List<Stock> stocks;
-        if(from == null && to == null) {
+        if (from == null && to == null) {
             stocks = stockDao.findAllByCompanySymbol(companySymbol);
-        } else if(from == null && to != null) {
+        } else if (from == null && to != null) {
             stocks = stockDao.findAllByCompanySymbolAndDateTimeLessThan(companySymbol, to);
-        } else if(from != null && to == null) {
+        } else if (from != null && to == null) {
             stocks = stockDao.findAllByCompanySymbolAndDateTimeGreaterThan(companySymbol, from);
         } else {
             stocks = stockDao.findAllByCompanySymbolAndDateTimeGreaterThanAndDateTimeLessThan(companySymbol, from, to);
