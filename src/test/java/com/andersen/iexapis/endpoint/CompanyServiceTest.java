@@ -6,6 +6,7 @@ import com.andersen.iexapis.endpoint.dto.datastore.Company;
 import com.andersen.iexapis.endpoint.dto.datastore.Stock;
 import com.andersen.iexapis.endpoint.dto.json.CompanyData;
 import com.andersen.iexapis.endpoint.services.CompanyService;
+import com.andersen.iexapis.endpoint.services.impl.CompanyServiceImpl;
 import com.google.cloud.Timestamp;
 import org.junit.After;
 import org.junit.Before;
